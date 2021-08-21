@@ -1,0 +1,50 @@
+.socials{
+    ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        li{
+            cursor: pointer;
+            margin-right: 10px;
+            fa-icon{
+                vertical-align: middle;
+                margin-right: 2px;
+            }
+        }
+    }
+
+    a{
+        cursor: pointer;
+        text-decoration: inherit;
+        color: inherit;
+    }
+}
+
+.content{
+    background-color: #0084ff;
+    color: white;
+    padding: 20px;
+    font-size: 18px;
+}
+
+.copyright{
+    margin-top: 26px;
+}
+
+
+.professional{
+    margin-right: 25px;
+}
+
+.socials-header{
+    margin-bottom: 5px;
+}
+
+h4, h5, h6{
+    text-align: center;
+}
+
+.discord-name:hover:after{
+        content: "#9533";
+    
+}
