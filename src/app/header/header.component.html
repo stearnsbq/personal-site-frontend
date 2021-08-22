@@ -1,16 +1,21 @@
-<div class="content">
-    <div class="profile-image">
-        <img>
+<div class="content" fxLayout="row">
+    <div fxFlex="10" class="profile-image">
+        <img src="https://via.placeholder.com/150">
     </div>
 
-    <div class="personal-info">
+
+    <div class="title-section" fxLayout="column" fxLayoutAlign="space-around">
         <div class="title">Byron Stearns</div>
         <div class="subtitle">Full Stack Software Development and Cyber Security</div>
+        <div class="nav" >
+            <ul fxLayout="row">
+                <li routerLink="/about-me" routerLinkActive="nav-active"><fa-icon></fa-icon><a>About Me</a></li>
+                <li routerLink="/blog" routerLinkActive="nav-active"><fa-icon></fa-icon> Blog</li>
+                <li routerLink="/projects" routerLinkActive="nav-active"><fa-icon></fa-icon> Projects</li>
+            </ul>
+    
+        </div>
     </div>
 
-    <div class="nav">
-        <span>About Me</span>
-        <span>Blog</span>
-        <span>Project</span>
-    </div>
+
 </div>

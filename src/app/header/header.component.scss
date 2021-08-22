@@ -1,3 +1,42 @@
 .content{
-    background-color: #0084ff;
+    background-color: #d1e7fc;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 15px;
+    margin: 0;
+}
+
+.nav{
+    ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        li{
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+    }
+}
+
+.nav-active{
+    background-color: rgba(149, 157, 165, 0.2);
+}
+
+.profile-image{
+    margin-left: 1%;
+    margin-right: 1%;
+    img{
+        border-radius: 50%;
+        width: 100%;
+    }
+}
+
+.title{
+    font-size: 32px;
+}
+
+.subtitle{
+    color: rgba(black, 0.6);
+    font-size: 18px;
 }
