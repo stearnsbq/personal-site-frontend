@@ -1,0 +1,25 @@
+<div class="card">
+    <div #header class="header">
+        <ng-content select="[header]">
+
+        </ng-content>
+    </div>
+
+    <div *ngIf="header.innerHTML !== ''" class="divider"></div>
+
+    <div class="body">
+        <ng-content #body select="[body]">
+
+        </ng-content>
+    </div>
+
+    <div class="footer">
+        <ng-content #footer select="[footer]">
+
+        </ng-content>
+    </div>
+
+
+</div>
+
+

@@ -6,6 +6,7 @@ import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontaweso
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -16,7 +17,8 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
   imports: [
     CommonModule,
     FlexLayoutModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    RouterModule
   ],
   exports: [FooterComponent]
 })
