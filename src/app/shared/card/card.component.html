@@ -1,11 +1,9 @@
-<div class="card">
+<div class="card" [style.padding]="padding || '15px'">
     <div #header class="header">
         <ng-content select="[header]">
 
         </ng-content>
     </div>
-
-    <div *ngIf="header.innerHTML !== ''" class="divider"></div>
 
     <div class="body">
         <ng-content #body select="[body]">

@@ -4,7 +4,9 @@
     box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
     padding: 15px;
     margin: 0;
-    height: 150px;
+    width: 100%;
+    min-height: 150px;
+   // padding-left: 14.5%;
 }
 
 .nav{
@@ -26,11 +28,13 @@
 }
 
 .profile-image{
-    margin-left: 1%;
-    margin-right: 2%;
+
+    width: 100%;
+    height: 125px;
     img{
         border-radius: 50%;
-        width: 100%;
+        width: 125px;
+        height: 125px;
     }
 }
 
@@ -42,3 +46,6 @@
     color: rgba(black, 0.6);
     font-size: 18px;
 }
+
+
+

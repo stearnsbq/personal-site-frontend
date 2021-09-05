@@ -1,16 +1,42 @@
-<div class="blog-toolbar">
+<app-toolbar></app-toolbar>
+<div class="blog-content" fxLayout="row" fxLayoutAlign="center">
+  <div
+    class="blog-grid"
+    fxFlex="75"
+    fxFlex.lt-md="100"
+    fxLayout="row wrap"
+    fxLayoutAlign="flex-start"
+    fxLayoutAlign.lt-md="center"
+  >
 
-</div>
-<div class="blog-content" fxLayout="row">
-    <div class="blog-grid" fxLayout="row wrap" fxLayoutGap="16px" fxLayoutAlign="flex-start">
-        <ng-container *ngFor="let _ of [1,2,3,4,5,6]">
-            <app-card>
-                <img class="card-image" header src="https://via.placeholder.com/1024">
+    <ng-container *ngFor="let _ of [].constructor(10)">
+      <app-card fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="0 1 calc(100% - 32px)" fxFlex="0 1 calc(33.3% - 32px)" padding="0px">
+        <a
+          class="card-image"
+          header
+          routerLink=""
+          [style.background-image]="'url(https://via.placeholder.com/1024)'"
+        >
+          <span>quad</span>
+        </a>
 
-            </app-card>
-        </ng-container>
+        <div body>
+          <h2>Lorem Ipsum</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+            imperdiet quam arcu, quis facilisis quam imperdiet at. Sed in
+            dignissim nunc. 
+          </p>
+        </div>
+      </app-card>
+    </ng-container>
+
+    <div class="pagination">
+
     </div>
-    <aside class="filter">
 
-    </aside>
+  </div>
+  <aside fxHide.lt-md fxFlex="8" class="filter">
+    <app-date-filter></app-date-filter>
+  </aside>
 </div>

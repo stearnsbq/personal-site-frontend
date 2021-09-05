@@ -1,13 +1,13 @@
-<div class="content" fxLayout="row">
-    <section fxFlex="6.5" class="profile-image">
-        <img src="https://via.placeholder.com/1024">
+<div class="content" fxLayout="row" fxLayoutAlign="flex-start" fxLayout.lt-lg="column">
+    <section fxFlex="8" class="profile-image" fxLayoutAlign.lt-lg="center">
+        <img src="https://via.placeholder.com/125">
     </section>
 
 
-    <section class="title-section" fxLayout="column" fxLayoutAlign="space-around">
-        <div routerLink="/admin" class="title">Byron Stearns</div>
-        <div class="subtitle">Full Stack Software Development and Cyber Security</div>
-        <div class="nav" >
+    <section class="title-section" fxLayout="column" fxLayoutAlign="space-around" >
+        <div fxLayoutAlign.lt-lg="center" routerLink="/admin" class="title">Quinn Stearns</div>
+        <div fxLayoutAlign.lt-lg="center" class="subtitle">Full Stack Software Development and Cyber Security</div>
+        <div fxLayoutAlign.lt-lg="center" class="nav" >
             <ul fxLayout="row">
                 <li routerLink="/about-me" routerLinkActive="nav-active"><fa-icon></fa-icon><a>About Me</a></li>
                 <li routerLink="/blog" routerLinkActive="nav-active"><fa-icon></fa-icon> Blog</li>
@@ -17,3 +17,4 @@
     </section>
 
 </div>
+

@@ -1,0 +1,7 @@
+<div class="blog-toolbar">
+    <div class="search">
+        <fa-icon (click)="showSearch = !showSearch" [icon]="faSearch"></fa-icon>
+        <input [@inOutAnimation] *ngIf="showSearch" placeholder="Search">
+    </div>
+
+</div>

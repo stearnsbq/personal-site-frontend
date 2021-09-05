@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-blog',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogComponent implements OnInit {
 
-  constructor() { }
+  constructor(private api: ApiService) {
+    this.api.getBlogPosts(1, '', 2021, 4, 24, 'big-ass-quad');
+   }
 
   ngOnInit(): void {
   }

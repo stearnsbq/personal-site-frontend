@@ -1,14 +1,16 @@
-<div class="content" fxLayout="row" fxLayoutAlign="space-around">
-    <span class="copyright" routerLink="/admin"> &copy; {{today | date : 'y'}} Byron Stearns</span>
-    <div class="socials" fxLayout="column">
+<div class="content" fxLayout="row" fxLayoutAlign="space-around" fxLayout.lt-sm="column">
+
+    <span class="copyright" fxLayoutAlign.lt-sm="center" routerLink="/admin"> &copy; {{today | date : 'y'}} Byron Stearns</span>
+
+    <section class="socials" fxLayout="column" >
         <div class="socials-header">
             <h4>Find me at</h4>
         </div>
-        <ul fxLayout="row">
-            <li><fa-icon [icon]="faGithub"></fa-icon>  <a href="https://github.com/stearnsbq" target="_blank">stearnsbq</a> </li>
-            <li><fa-icon [icon]="faLinkedIn"></fa-icon> <a href="https://www.linkedin.com/in/byron-stearns-a6308918a/" target="_blank">Byron Stearns</a> </li>
-            <li><fa-icon [icon]="faDiscord"></fa-icon> <span class="discord-name">quinn50</span> </li>
-            <li><fa-icon [icon]="faSteam"></fa-icon> <a href="https://steamcommunity.com/id/quinn50" target="_blank">quinn50</a> </li>
+        <ul fxLayout="row" fxLayout.lt-sm="column"  >
+            <li fxLayoutAlign.lt-sm="center"><fa-icon [icon]="faGithub"></fa-icon>  <a href="https://github.com/stearnsbq" target="_blank">stearnsbq</a> </li>
+            <li fxLayoutAlign.lt-sm="center"><fa-icon [icon]="faLinkedIn"></fa-icon> <a href="https://www.linkedin.com/in/byron-stearns-a6308918a/" target="_blank">Byron Stearns</a> </li>
+            <li fxLayoutAlign.lt-sm="center"><fa-icon [icon]="faDiscord"></fa-icon> <span class="discord-name">quinn50</span> </li>
+            <li fxLayoutAlign.lt-sm="center"><fa-icon [icon]="faSteam"></fa-icon> <a href="https://steamcommunity.com/id/quinn50" target="_blank">quinn50</a> </li>
         </ul>
-    </div>
+    </section>
 </div>
