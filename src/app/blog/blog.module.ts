@@ -9,6 +9,12 @@ import { DateFilterComponent } from './date-filter/date-filter.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MonthPipe } from './month.pipe';
+import { YearComponent } from './year/year.component';
+import { MonthComponent } from './month/month.component';
+import { DayComponent } from './day/day.component';
+import { GridComponent } from './grid/grid.component';
+import { RouterModule } from '@angular/router';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +22,19 @@ import { MonthPipe } from './month.pipe';
     DateFilterComponent,
     ToolbarComponent,
     MonthPipe,
+    YearComponent,
+    MonthComponent,
+    DayComponent,
+    GridComponent,
+    PostComponent,
   ],
   imports: [
     CommonModule,
     BlogRoutingModule,
     SharedModule,
     FlexLayoutModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    RouterModule
   ]
 })
 export class BlogModule { }

@@ -1,0 +1,54 @@
+
+<ng-container *ngIf="posts && posts.length > 0 else noPosts">
+    <app-toolbar></app-toolbar>
+    <div class="content" fxLayoutAlign="center">
+      <div
+        class="blog-grid"
+        fxFlex="75"
+        fxFlex.lt-md="100"
+        fxLayout="row wrap"
+        fxLayoutAlign="flex-start"
+        fxLayoutAlign.lt-md="center"
+      >
+        <ng-container *ngFor="let post of posts">
+          <app-card
+            fxFlex.lt-lg="0 1 calc(50% - 32px)"
+            fxFlex.lt-sm="0 1 calc(100% - 32px)"
+            fxFlex="0 1 calc(33.3% - 32px)"
+            padding="0px"
+          >
+            <a
+              class="card-image"
+              header
+              routerLink=""
+              [style.background-image]="'url(https://via.placeholder.com/1024)'"
+            >
+              <span>{{ post }}</span>
+            </a>
+    
+            <div body>
+              <h2>Lorem Ipsum</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+                imperdiet quam arcu, quis facilisis quam imperdiet at. Sed in
+                dignissim nunc.
+              </p>
+            </div>
+          </app-card>
+        </ng-container>
+    
+        <div class="pagination"></div>
+      </div>
+    
+      <aside>
+        <app-date-filter></app-date-filter>
+      </aside>
+    </div>
+    
+</ng-container>
+
+
+<ng-template #noPosts>
+
+</ng-template>
+
