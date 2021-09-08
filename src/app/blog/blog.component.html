@@ -1,6 +1,6 @@
 <div class="blog-content" fxLayout="row" fxLayoutAlign="center">
-    <ng-container *ngIf="router.url === '/blog' else children">
-        <app-grid [posts]="[].constructor(10)"></app-grid>
+    <ng-container *ngIf="isParent else children">
+        <app-grid [posts]="[].constructor(9)"></app-grid>
     </ng-container>
     <ng-template #children>
         <router-outlet></router-outlet>

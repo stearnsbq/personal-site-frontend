@@ -1,5 +1,7 @@
+import { query } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IBlogPostCard } from '../model/IBlogPostCard';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -8,12 +10,31 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent implements OnInit {
+  public isParent = this.router.url === '/blog';
+  public posts? :IBlogPostCard[];
+  constructor(private api: ApiService, public router: Router, public route: ActivatedRoute) {
 
-  constructor(private api: ApiService, public router: Router) {
-    this.api.getBlogPosts(1, '', 2021, 4, 24, 'big-ass-quad');
+
+
+
+
+    
    }
 
   ngOnInit(): void {
+
+
+    if(this.isParent){
+
+      this.route.queryParams.subscribe(({search, category}) => {
+        this.api.getBlogPosts(1, search, category).subscribe((posts) => this.posts = posts);
+      })
+
+
+      this.api.getBlogPosts(1).subscribe((posts) => this.posts = posts);
+    }
+
+
   }
 
 }

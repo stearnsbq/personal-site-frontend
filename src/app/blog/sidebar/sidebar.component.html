@@ -1,0 +1,30 @@
+<div class="sidebar-container" fxLayout="column">
+    <app-card padding='0px'>
+        <div class="card-header" header>
+            <h2>Categories</h2>
+        </div>
+        <div class="card-body" body>
+            <ul>
+                <li (click)="gotoCategory(category)" *ngFor="let category of categories">{{category}}</li>
+            </ul>
+        </div>
+    </app-card>
+
+    <app-card padding='0px'>
+        <div class="card-header" header>
+            <h2>Archives</h2>
+        </div>
+        <div class="card-body" body>
+            <ul>
+                <ng-container *ngFor="let archive of archives">
+                    <li>
+                        <p routerLink="/blog/{{archive.year}}">{{archive.year}}</p>
+                        <ul [@inOutAnimation] *ngIf="router.url.includes(archive.year)">
+                            <li [routerLink]="['/blog', archive.year, month | month]" *ngFor="let month of archive.months">{{month}}</li>
+                        </ul>
+                    </li>
+                </ng-container>
+            </ul>
+        </div>
+    </app-card>
+</div>

@@ -5,7 +5,6 @@ import { BlogRoutingModule } from './blog-routing.module';
 import { BlogComponent } from './blog.component';
 import { SharedModule } from '../shared/shared.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { DateFilterComponent } from './date-filter/date-filter.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MonthPipe } from './month.pipe';
@@ -15,11 +14,11 @@ import { DayComponent } from './day/day.component';
 import { GridComponent } from './grid/grid.component';
 import { RouterModule } from '@angular/router';
 import { PostComponent } from './post/post.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     BlogComponent,
-    DateFilterComponent,
     ToolbarComponent,
     MonthPipe,
     YearComponent,
@@ -27,6 +26,7 @@ import { PostComponent } from './post/post.component';
     DayComponent,
     GridComponent,
     PostComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +34,7 @@ import { PostComponent } from './post/post.component';
     SharedModule,
     FlexLayoutModule,
     FontAwesomeModule,
-    RouterModule
+    RouterModule,
   ]
 })
 export class BlogModule { }
