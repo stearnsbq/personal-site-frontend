@@ -1,7 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { combineLatest } from 'rxjs';
 import { IBlogPostCard } from 'src/app/model/IBlogPostCard';
 import { ApiService } from 'src/app/services/api.service';
+import { map } from 'rxjs/operators';
+import { query } from '@angular/animations';
 
 @Component({
   selector: 'app-grid',
@@ -13,14 +16,13 @@ export class GridComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute, private api: ApiService) {
 
-    this.route.params.subscribe(async ({year, month, day}) => {
+    combineLatest([this.route.params, this.route.queryParams]).pipe(map(([params, query]) => ({params, query}))).subscribe(async ({params, query}) => {
 
-      this.route.queryParams.subscribe(async ({search, category}) => {
-        this.posts = await this.api.getBlogPosts(1, search, category, parseInt(year), parseInt(month), parseInt(day)).toPromise()
-      })
+      const {search, category} = query;
+      const {year, month, day} = params;
 
-      this.posts = await this.api.getBlogPosts(1, undefined, undefined, parseInt(year), parseInt(month), parseInt(day)).toPromise()
-      
+      this.posts = await this.api.getBlogPosts(1, search, category, parseInt(year), parseInt(month), parseInt(day)).toPromise()
+
     })
 
 
