@@ -10,11 +10,9 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent implements OnInit {
-  public isParent = this.router.url === '/blog';
   public posts? :IBlogPostCard[];
   constructor(private api: ApiService, public router: Router, public route: ActivatedRoute) {
-
-
+  
 
 
 
@@ -23,8 +21,7 @@ export class BlogComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-    if(this.isParent){
+    if(this.route.children.length === 0){
 
       this.route.queryParams.subscribe(({search, category}) => {
         this.api.getBlogPosts(1, search, category).subscribe((posts) => this.posts = posts);

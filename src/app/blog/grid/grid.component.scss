@@ -16,3 +16,18 @@
 
 }
 
+app-card{
+    cursor: pointer;
+}
+
+.title{
+    margin-bottom: 5px;
+}
+
+.subtitle{
+    color: rgba(black, 0.5);
+    span{
+        margin-right: 5px;
+    }
+}
+

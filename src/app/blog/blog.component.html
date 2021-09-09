@@ -1,8 +1,13 @@
 <div class="blog-content" fxLayout="row" fxLayoutAlign="center">
-    <ng-container *ngIf="isParent else children">
-        <app-grid [posts]="[].constructor(9)"></app-grid>
-    </ng-container>
-    <ng-template #children>
-        <router-outlet></router-outlet>
-    </ng-template>
+    <div class="blog-grid-container">
+        <ng-container *ngIf="route.children.length === 0 else children">
+            <app-grid></app-grid>
+        </ng-container>
+
+
+        <ng-template #children>
+            <router-outlet></router-outlet>
+        </ng-template>
+    </div>
+
 </div>

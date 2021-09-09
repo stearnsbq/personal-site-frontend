@@ -8,9 +8,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MonthPipe } from './month.pipe';
-import { YearComponent } from './year/year.component';
-import { MonthComponent } from './month/month.component';
-import { DayComponent } from './day/day.component';
 import { GridComponent } from './grid/grid.component';
 import { RouterModule } from '@angular/router';
 import { PostComponent } from './post/post.component';
@@ -21,9 +18,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     BlogComponent,
     ToolbarComponent,
     MonthPipe,
-    YearComponent,
-    MonthComponent,
-    DayComponent,
     GridComponent,
     PostComponent,
     SidebarComponent
