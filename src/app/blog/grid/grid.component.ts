@@ -9,37 +9,53 @@ import { query } from '@angular/animations';
 @Component({
   selector: 'app-grid',
   templateUrl: './grid.component.html',
-  styleUrls: ['./grid.component.scss']
+  styleUrls: ['./grid.component.scss'],
 })
 export class GridComponent implements OnInit {
   public posts!: IBlogPostCard[];
 
-  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService) {
-
-    combineLatest([this.route.params, this.route.queryParams]).pipe(map(([params, query]) => ({params, query}))).subscribe(async ({params, query}) => {
-
-      const {search, category} = query;
-      const {year, month, day} = params;
-
-      this.posts = await this.api.getBlogPosts(1, search, category, parseInt(year), parseInt(month), parseInt(day)).toPromise()
-
-    })
-
-
-
-   }
-
-  ngOnInit(): void {
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private api: ApiService
+  ) {
+    combineLatest([this.route.params, this.route.queryParams])
+      .pipe(
+        map(([params, query]) => ({
+          params,
+          query,
+        }))
+      )
+      .subscribe(
+        async ({
+          params: { search, category },
+          query: { year, month, day },
+        }) => {
+          this.posts = await this.api
+            .getBlogPosts(
+              1,
+              search,
+              category,
+              parseInt(year),
+              parseInt(month),
+              parseInt(day)
+            )
+            .toPromise();
+        }
+      );
   }
 
+  ngOnInit(): void {}
 
-  gotoPost(post: IBlogPostCard){
+  gotoPost(post: IBlogPostCard) {
     const date = new Date(post.created);
 
-
-
-    this.router.navigate(['/blog', date.getFullYear(), date.getMonth() + 1, date.getDate(), post.title.replace(" ", "-") ])
-
+    this.router.navigate([
+      '/blog',
+      date.getFullYear(),
+      date.getMonth() + 1,
+      date.getDate(),
+      post.title.replace(' ', '-'),
+    ]);
   }
-
 }

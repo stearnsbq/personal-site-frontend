@@ -1,7 +1,6 @@
 <div class="blog-toolbar" fxLayout="column">
-    <div class="search" fxLayout="row" fxLayoutAlign.lt-md="center">
+    <div class="search"  fxLayout="row" fxLayoutAlign.lt-md="center">
         <fa-icon [icon]="faSearch"></fa-icon>
-        <input placeholder="Search">
+        <input (change)="onSearch(search.value)" #search placeholder="Search">
     </div>
-
 </div>

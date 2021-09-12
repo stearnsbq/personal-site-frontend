@@ -25,7 +25,12 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@tinymce/tinymce-angular": "^4.2.4",
+    "@types/prismjs": "^1.16.6",
+    "prismjs": "^1.24.1",
     "rxjs": "~6.6.0",
+    "simplemde": "^1.11.2",
+    "tinymce": "^5.9.2",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
   },
