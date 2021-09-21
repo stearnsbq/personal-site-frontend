@@ -1,1 +1,13 @@
-<p>projects works!</p>
+<div class="projects-content" fxLayout="row" fxLayoutAlign="center">
+    <div class="projects-grid-container">
+        <ng-container *ngIf="route.children.length === 0 else children">
+            <app-grid></app-grid>
+        </ng-container>
+
+
+        <ng-template #children>
+            <router-outlet></router-outlet>
+        </ng-template>
+    </div>
+
+</div>

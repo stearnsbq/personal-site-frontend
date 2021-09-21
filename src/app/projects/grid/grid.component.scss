@@ -1,0 +1,33 @@
+.card-image{
+    display: block;
+    height: 150px;
+    background-position: 50% 50% !important;
+    background-origin: border-box;
+    object-fit: contain;
+
+    span{
+        position: absolute!important;
+        width: 1px!important;
+        height: 1px!important;
+        overflow: hidden!important;
+        color: rgba(255,255,255,0)!important;
+        pointer-events: none!important;
+    }
+
+}
+
+app-card{
+    cursor: pointer;
+}
+
+.title{
+    margin-bottom: 5px;
+}
+
+.subtitle{
+    color: rgba(black, 0.5);
+    span{
+        margin-right: 5px;
+    }
+}
+

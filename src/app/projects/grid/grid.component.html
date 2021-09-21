@@ -1,0 +1,52 @@
+<ng-container >
+    <app-toolbar></app-toolbar>
+    <div class="content" fxLayoutAlign="center">
+      <div
+        class="blog-grid"
+        fxFlex="75"
+        fxFlex.lt-md="100"
+        fxLayout="row wrap"
+        fxLayoutAlign="flex-start"
+        fxLayoutAlign.lt-md="center"
+      >
+        <ng-container *ngFor="let post of [].constructor(10)">
+          <app-card
+            fxFlex.lt-lg="0 1 calc(50% - 32px)"
+            fxFlex.lt-sm="0 1 calc(100% - 32px)"
+            fxFlex="0 1 calc(33.3% - 32px)"
+            padding="0px"
+            (click)="gotoProject(post)"
+          >
+            <a
+              class="card-image"
+              header
+              style.background-image="url()"
+            >
+              <span>Lorem Ipsum</span>
+            </a>
+  
+            <div body>
+              <div class="title" fxLayout="column">
+                <h2>Lorem Ipsum</h2>
+                <div class="subtitle" fxLayout="row" fxLayoutAlign="flex-start">
+                  <!-- <span>{{ post.created | date }}</span>
+                  <span>&bull;</span>
+                  <span>{{ post.timeToRead }} read</span> -->
+                </div>
+              </div>
+  
+              <!-- <div class="description">
+                {{ post.description }}
+              </div> -->
+            </div>
+          </app-card>
+        </ng-container>
+  
+        <div class="pagination"></div>
+      </div>
+  
+    </div>
+  </ng-container>
+  
+  <ng-template #noPosts> </ng-template>
+  

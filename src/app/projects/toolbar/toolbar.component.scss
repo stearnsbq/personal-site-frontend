@@ -1,0 +1,27 @@
+.blog-toolbar{
+    padding: 15px;
+    background-color: #d1e7fc;
+    box-shadow:  rgb(67 71 85 / 27%) 0px 0px 0.25em -0.25em, rgb(90 125 188 / 5%) 0px 0.25em 1em -1em;
+    display: flex;
+}
+
+.search{
+    padding: 5px;
+
+    fa-icon{
+        margin-right: 5px;
+        padding: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        vertical-align: baseline;
+    }
+
+    input{
+        background-color: white;
+        width: 350px;
+        border: none;
+        padding: 5px;
+        margin: -5px;
+        border-radius: 5px;
+    }
+}
