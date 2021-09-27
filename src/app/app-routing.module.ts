@@ -29,6 +29,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./admin/admin.module').then((m) => m.AdminModule),
   },
+  {path: 'not-found',     loadChildren: () =>
+  import('./not-found/not-found.module').then((m) => m.NotFoundModule)}
 ];
 
 @NgModule({

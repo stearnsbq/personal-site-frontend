@@ -8,13 +8,15 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { GridComponent } from './grid/grid.component';
 import { SharedModule } from '../shared/shared.module';
+import { PageComponent } from './page/page.component';
 
 
 @NgModule({
   declarations: [
     ProjectsComponent,
     ToolbarComponent,
-    GridComponent
+    GridComponent,
+    PageComponent
   ],
   imports: [
     CommonModule,
