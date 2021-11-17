@@ -9,31 +9,31 @@
         fxLayoutAlign="flex-start"
         fxLayoutAlign.lt-md="center"
       >
-        <ng-container *ngFor="let post of [].constructor(10)">
+        <ng-container *ngFor="let project of projects">
           <app-card
             fxFlex.lt-lg="0 1 calc(50% - 32px)"
             fxFlex.lt-sm="0 1 calc(100% - 32px)"
             fxFlex="0 1 calc(33.3% - 32px)"
             padding="0px"
-            (click)="gotoProject(post)"
+            (click)="gotoProject(project)"
           >
             <a
               class="card-image"
               header
-              style.background-image="url()"
+              style.background-image="url({{project.image}})"
             >
               <span>Lorem Ipsum</span>
             </a>
   
             <div body>
               <div class="title" fxLayout="column">
-                <h2>Lorem Ipsum</h2>
+                <h2>{{project.title}}</h2>
                 <div class="subtitle" fxLayout="row" fxLayoutAlign="flex-start">
                 </div>
               </div>
   
               <div class="description">
-                {{ post }}
+                {{ project.description }}
               </div>
             </div>
           </app-card>

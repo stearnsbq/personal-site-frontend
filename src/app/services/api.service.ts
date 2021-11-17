@@ -4,12 +4,31 @@ import { of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IBlogPost } from '../model/IBlogPost';
 import { IBlogPostCard } from '../model/IBlogPostCard';
+import { IProject } from '../model/IProject';
+import { IProjectCard } from '../model/IProjectCard';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
   constructor(private http: HttpClient) {}
+
+
+  public getProjects(){
+    //return this.http.get<IProjectCard[]>(`${environment.apiURL}/projects/`);
+    return of(new Array(9).fill(      {
+      title: 'Lorem Ipsum',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras imperdiet quam arcu, quis facilisis quam imperdiet at. Sed in dignissim nunc.',
+      created: '2021-09-09T00:57:10Z',
+      lastUpdated: '2021-09-09T00:57:10Z',
+      image: 'https://via.placeholder.com/1024',
+    }));
+  }
+
+  public getProject(name: string){
+    return this.http.get<IProject>(`${environment.apiURL}/projects/${name}`);
+  }
+
 
   public getBlogPost(year: number, month: number, day: number, title: string){
      return this.http.get<IBlogPost>(`${environment.apiURL}/posts/${year}/${month}/${day}/${title}`);

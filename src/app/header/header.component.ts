@@ -12,4 +12,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public openResume(){
+      window.open('../assets/resume.pdf', '_blank')
+  }
+
 }

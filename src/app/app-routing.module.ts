@@ -29,12 +29,18 @@ const routes: Routes = [
     loadChildren: () =>
       import('./admin/admin.module').then((m) => m.AdminModule),
   },
-  {path: 'not-found',     loadChildren: () =>
-  import('./not-found/not-found.module').then((m) => m.NotFoundModule)}
+  {
+    path: '**',
+    loadChildren: () =>
+      import('./not-found/not-found.module').then((m) => m.NotFoundModule),
+  },
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {paramsInheritanceStrategy: 'always'})],
+  imports: [
+    RouterModule.forRoot(routes, { paramsInheritanceStrategy: 'always' }),
+  ],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
