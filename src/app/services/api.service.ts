@@ -6,6 +6,7 @@ import { IBlogPost } from '../model/IBlogPost';
 import { IBlogPostCard } from '../model/IBlogPostCard';
 import { IProject } from '../model/IProject';
 import { IProjectCard } from '../model/IProjectCard';
+import { IResponse } from '../model/IResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -15,14 +16,7 @@ export class ApiService {
 
 
   public getProjects(){
-    //return this.http.get<IProjectCard[]>(`${environment.apiURL}/projects/`);
-    return of(new Array(9).fill(      {
-      title: 'Lorem Ipsum',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras imperdiet quam arcu, quis facilisis quam imperdiet at. Sed in dignissim nunc.',
-      created: '2021-09-09T00:57:10Z',
-      lastUpdated: '2021-09-09T00:57:10Z',
-      image: 'https://via.placeholder.com/1024',
-    }));
+    return this.http.get<IResponse<IProjectCard[]>>(`${environment.apiURL}/projects/`);
   }
 
   public getProject(name: string){

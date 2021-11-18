@@ -1,7 +1,11 @@
 export interface IProjectCard{
     title: string;
+    githubURL: string;
     description: string;
     created: string;
     lastUpdated: string;
-    image: string;
+    languages: string[]
+    stars: number;
+    forks: number;
+    githubID: string;
 }
