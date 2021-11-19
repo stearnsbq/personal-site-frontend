@@ -15,8 +15,14 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
 
-  public getProjects(){
-    return this.http.get<IResponse<IProjectCard[]>>(`${environment.apiURL}/projects/`);
+  public getProjects(search?: string, page = 0){
+    let params = new HttpParams().set('page', page);
+
+    if(search){
+      params = params.set('search', search)
+    }
+
+    return this.http.get<IResponse<IProjectCard[]>>(`${environment.apiURL}/projects/`, {params});
   }
 
   public getProject(name: string){
