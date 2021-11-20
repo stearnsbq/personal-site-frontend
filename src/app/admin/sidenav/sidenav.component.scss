@@ -1,0 +1,24 @@
+.sidenav-container{
+    background-color: #d1e7fc;
+    min-height: calc(100vh - 59px);
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li{
+        padding: 15px;
+        transition: 0.2s;
+        cursor: pointer;
+    }
+
+    li:hover{
+        transition: 0.2s;
+        background-color: #99caf8; 
+    }
+}
+
+.active{
+    background-color: #78b9f5;
+}

@@ -1,0 +1,6 @@
+<div class="sidenav-container" fxLayout="column">
+    <ul>
+        <li routerLinkActive="active" [routerLink]="['/admin/' + route.path]" *ngFor="let route of route.routeConfig?.children">{{route.data!.label}}</li>
+    </ul>
+
+</div>
