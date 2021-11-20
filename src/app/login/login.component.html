@@ -1,0 +1,22 @@
+<div class="login-container" fxLayout="row" fxLayoutAlign="center center">
+    <app-card fxFlex="20%">
+        <section header fxLayoutAlign="center">
+            <h1>Admin Login</h1>
+        </section>
+        <form body [formGroup]="loginForm" (ngSubmit)="onSubmit()" fxLayout="column"  >
+            <label for="username">Username: </label>
+            <input id="username" type="text" formControlName="username">
+
+
+            <label for="password">Password: </label>
+            <input id="password" type="password" formControlName="password">
+
+          
+            <section class="button-section" fxLayoutAlign="center">
+                <button>Login</button>
+            </section>
+            
+        </form>
+    </app-card>
+
+</div>

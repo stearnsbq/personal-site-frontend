@@ -8,7 +8,16 @@ import { HeaderModule } from './header/header.module';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { AuthService } from './services/auth.service';
+import { StorageService } from './services/storage.service';
+
+export const jwtOptionsFactory = (storage: StorageService) => ({
+  tokenGetter: () => storage.get('access_token'),
+  whitelistedDomains: []
+});
+
+
 
 @NgModule({
   declarations: [
@@ -22,9 +31,16 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     HeaderModule,
     FlexLayoutModule,
     FontAwesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    JwtModule.forRoot({
+      jwtOptionsProvider: {
+        provide: JWT_OPTIONS,
+        deps: [StorageService],
+        useFactory: jwtOptionsFactory
+      },
+    })
   ],
-  providers: [],
+  providers: [StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
