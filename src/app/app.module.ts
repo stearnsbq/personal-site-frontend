@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { AuthService } from './services/auth.service';
 import { StorageService } from './services/storage.service';
+import { QuillModule } from 'ngx-quill';
 
 export const jwtOptionsFactory = (storage: StorageService) => ({
   tokenGetter: () => storage.get('access_token'),
@@ -32,13 +33,17 @@ export const jwtOptionsFactory = (storage: StorageService) => ({
     FlexLayoutModule,
     FontAwesomeModule,
     HttpClientModule,
+    QuillModule.forRoot(),
+
     JwtModule.forRoot({
       jwtOptionsProvider: {
         provide: JWT_OPTIONS,
         deps: [StorageService],
         useFactory: jwtOptionsFactory
       },
-    })
+    }),
+
+
   ],
   providers: [StorageService],
   bootstrap: [AppComponent]

@@ -5,4 +5,5 @@ export interface IBlogPostCard{
     lastUpdated: string;
     timeToRead: string;
     image: string;
+    views: number;
 }

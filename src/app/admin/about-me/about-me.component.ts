@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IAboutMe } from 'src/app/model/IAboutMe';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-about-me',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutMeComponent implements OnInit {
 
-  constructor() { }
+  public aboutMe? : IAboutMe;
+
+  constructor(private api: ApiService) { }
 
   ngOnInit(): void {
   }

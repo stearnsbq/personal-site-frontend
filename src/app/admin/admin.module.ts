@@ -9,6 +9,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { BlogComponent } from './blog/blog.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { AboutMeComponent } from './about-me/about-me.component';
+import { QuillModule } from 'ngx-quill';
 
 
 @NgModule({
@@ -18,12 +19,12 @@ import { AboutMeComponent } from './about-me/about-me.component';
     SidenavComponent,
     BlogComponent,
     ProjectsComponent,
-    AboutMeComponent
+    AboutMeComponent,
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class AdminModule { }

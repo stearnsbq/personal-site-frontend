@@ -4,4 +4,5 @@ export interface IBlogPost{
     lastUpdated: string;
     timeToRead: string;
     content: string;
+    views: number;
 }

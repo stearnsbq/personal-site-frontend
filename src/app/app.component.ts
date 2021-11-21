@@ -10,7 +10,11 @@ export class AppComponent implements OnInit {
   title = 'personal-site-frontend';
   public isAdmin;
   constructor(public router: Router){
-    this.isAdmin = !router.url.includes('admin')
+    this.isAdmin = false;
+    this.router.events.subscribe((event) => {
+      this.isAdmin = router.url.includes('admin')
+    })
+    
   }
 
 

@@ -12,7 +12,6 @@ import { GridComponent } from './grid/grid.component';
 import { RouterModule } from '@angular/router';
 import { PostComponent } from './post/post.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 @NgModule({
   declarations: [
     BlogComponent,
@@ -27,10 +26,8 @@ import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
     BlogRoutingModule,
     SharedModule,
     FlexLayoutModule,
-    FontAwesomeModule,
     RouterModule,
-    EditorModule
   ],
-  providers:[{ provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' }]
+  providers:[]
 })
 export class BlogModule { }

@@ -4,7 +4,6 @@ import { of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IBlogPost } from '../model/IBlogPost';
 import { IBlogPostCard } from '../model/IBlogPostCard';
-import { IProject } from '../model/IProject';
 import { IProjectCard } from '../model/IProjectCard';
 import { IResponse } from '../model/IResponse';
 
@@ -23,10 +22,6 @@ export class ApiService {
     }
 
     return this.http.get<IResponse<IProjectCard[]>>(`${environment.apiURL}/projects/`, {params});
-  }
-
-  public getProject(name: string){
-    return this.http.get<IProject>(`${environment.apiURL}/projects/${name}`);
   }
 
 
@@ -65,6 +60,7 @@ export class ApiService {
       lastUpdated: '2021-09-09T00:57:10Z',
       timeToRead: '5 min',
       image: 'https://via.placeholder.com/1024',
+      views: Math.floor(Math.random() * 10000)
     }));
     // return this.http.get<IBlogPostCard[]>(`${environment.apiURL}/posts${path}`, {params});
   }
