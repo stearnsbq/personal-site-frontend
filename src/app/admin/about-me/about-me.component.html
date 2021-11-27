@@ -1,18 +1,151 @@
-<div class="manage-about-me-container">
+<div *ngIf="aboutMe" class="manage-about-me-container">
   <app-card>
     <h1 header>About Me & Interests</h1>
     <app-editor body></app-editor>
   </app-card>
   <app-card>
     <h1 header>Education</h1>
-    <app-editor body></app-editor>
+    <table body>
+      <tr>
+        <th>Degree</th>
+        <th>School</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let line of aboutMe.education; let i = index">
+        <ng-container>
+          <td>{{ line.degree }}</td>
+          <td>{{ line.school }}</td>
+          <td>{{ line.start | date: "y" }}</td>
+          <td>{{ line.end | date: "y" }}</td>
+          <td fxLayout="row" fxLayoutAlign="center">
+            <fa-icon
+              (click)="openEducationModal(line)"
+              fxFlex="25%"
+              style="color: green; margin-right: 5px"
+              [icon]="faEdit"
+            ></fa-icon>
+            <fa-icon
+              fxFlex="25%"
+              style="color: red"
+              [icon]="faDelete"
+            ></fa-icon>
+          </td>
+        </ng-container>
+      </tr>
+    </table>
   </app-card>
   <app-card>
     <h1 header>Experience</h1>
-    <app-editor body></app-editor>
+    <table body>
+      <tr>
+        <th>Title</th>
+        <th>Company</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let line of aboutMe.experience; let i = index">
+        <ng-container>
+          <td>{{ line.title }}</td>
+          <td>{{ line.company }}</td>
+          <td>{{ line.start | date: "MMMM, y" }}</td>
+          <td>{{ line.end | date: "MMMM, y" }}</td>
+          <td fxLayout="row" fxLayoutAlign="center">
+            <fa-icon
+              fxFlex="25%"
+              style="color: green; margin-right: 5px"
+              [icon]="faEdit"
+            ></fa-icon>
+            <fa-icon
+              fxFlex="25%"
+              style="color: red"
+              [icon]="faDelete"
+            ></fa-icon>
+          </td>
+        </ng-container>
+      </tr>
+    </table>
   </app-card>
   <app-card>
     <h1 header>Certifications & Licenses</h1>
-    <app-editor body></app-editor>
+    <table body>
+      <tr>
+        <th>Title</th>
+        <th>Credential</th>
+        <th>Acquired</th>
+        <th>Expiration</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let line of aboutMe.certsAndLicenses; let i = index">
+        <ng-container>
+          <td>{{ line.title }}</td>
+          <td>{{ line.credential }}</td>
+          <td>{{ line.acquired | date }}</td>
+          <td>{{ line.expiration | date }}</td>
+          <td fxLayout="row" fxLayoutAlign="center">
+            <fa-icon
+              fxFlex="25%"
+              style="color: green; margin-right: 5px"
+              [icon]="faEdit"
+            ></fa-icon>
+            <fa-icon
+              fxFlex="25%"
+              style="color: red"
+              [icon]="faDelete"
+            ></fa-icon>
+          </td>
+        </ng-container>
+      </tr>
+    </table>
   </app-card>
 </div>
+
+
+<app-modal #educationEditModal>
+  <h1 header>Edit Education</h1>
+  <form body [formGroup]="educationEditForm" fxLayout="column"> 
+
+      <section fxLayout="column">
+        <label for="degree">Degree:</label>
+        <input id="degree" type="text" formControlName="degree">
+      </section>
+
+      <section fxLayout="column" >
+        <label for="school">School:</label>
+        <input id="school" type="text" formControlName="school">
+      </section>
+
+
+      <section fxLayout="column" >
+        <label for="start">Start:</label>
+        <input id="start" type="date" formControlName="start">
+      </section>
+
+
+      <section fxLayout="column" >
+        <label for="end">End:</label>
+        <input id="end" type="date" formControlName="end">
+      </section>
+
+
+      <section fxLayout="row" fxLayoutAlign="center">
+        <button>Save</button>
+      </section>
+
+  </form>
+</app-modal>
+
+<app-modal #experienceEditModal >
+  <form [formGroup]="experienceEditForm">
+
+  </form>
+</app-modal>
+
+<app-modal #certsAndLicensesEditModal >
+  <form [formGroup]="certsAndLicensesEditForm">
+
+  </form>
+</app-modal>
+

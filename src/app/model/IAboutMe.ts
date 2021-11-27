@@ -25,6 +25,7 @@ export interface IExperience {
 
 export interface ICertsAndLicenses {
     title: string;
+    credential: string;
     description: string;
     acquired: Date;
     expiration?: Date;

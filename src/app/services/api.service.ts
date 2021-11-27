@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { IAboutMe } from '../model/IAboutMe';
 import { IBlogPost } from '../model/IBlogPost';
 import { IBlogPostCard } from '../model/IBlogPostCard';
 import { IProjectCard } from '../model/IProjectCard';
@@ -12,6 +13,10 @@ import { IResponse } from '../model/IResponse';
 })
 export class ApiService {
   constructor(private http: HttpClient) {}
+
+  public getAboutMe(){
+    return this.http.get<IResponse<IAboutMe>>(`${environment.apiURL}/about`);
+  }
 
 
   public getProjects(search?: string, page = 0){
