@@ -9,16 +9,16 @@ export interface IAboutMe{
 export interface IEducation {
     degree: string;
     school: string;
-    start: Date;
-    end?: Date;
+    start: string;
+    end?: string;
 }
 
 
 export interface IExperience {
     title: string;
     company: string;
-    start: Date;
-    end?: Date;
+    start: string;
+    end?: string;
     bullets: string[];
 }
 
@@ -27,6 +27,6 @@ export interface ICertsAndLicenses {
     title: string;
     credential: string;
     description: string;
-    acquired: Date;
-    expiration?: Date;
+    acquired: string;
+    expiration?: string;
   }

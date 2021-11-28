@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-modal',
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class ModalComponent implements OnInit {
 
   public shown: boolean;
+
+  faExit = faWindowClose
 
   constructor() { 
     this.shown = false;

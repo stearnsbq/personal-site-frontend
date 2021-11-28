@@ -20,7 +20,8 @@ import { ModalComponent } from './modal/modal.component';
   imports: [
     CommonModule,
     QuillModule.forRoot(),
-    FlexLayoutModule
+    FlexLayoutModule,
+    FontAwesomeModule
   ],
   exports:[
     CardComponent,

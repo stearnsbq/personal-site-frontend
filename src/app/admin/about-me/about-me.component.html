@@ -4,7 +4,16 @@
     <app-editor body></app-editor>
   </app-card>
   <app-card>
-    <h1 header>Education</h1>
+    <section header fxLayout="row" fxLayoutAlign="space-between">
+      <h1 header>Education</h1>
+      <fa-icon
+      (click)="openNewEducationModal()"
+      [icon]="faEdit"
+    ></fa-icon>
+    </section>
+   
+
+
     <table body>
       <tr>
         <th>Degree</th>
@@ -21,13 +30,14 @@
           <td>{{ line.end | date: "y" }}</td>
           <td fxLayout="row" fxLayoutAlign="center">
             <fa-icon
-              (click)="openEducationModal(line)"
+              (click)="openEditEducationModal(line, i)"
               fxFlex="25%"
               style="color: green; margin-right: 5px"
               [icon]="faEdit"
             ></fa-icon>
             <fa-icon
               fxFlex="25%"
+              (click)="deleteEducationItem(i)"
               style="color: red"
               [icon]="faDelete"
             ></fa-icon>
@@ -105,7 +115,7 @@
 
 <app-modal #educationEditModal>
   <h1 header>Edit Education</h1>
-  <form body [formGroup]="educationEditForm" fxLayout="column"> 
+  <form body [formGroup]="educationEditForm" (ngSubmit)="onEducationSave()" fxLayout="column"> 
 
       <section fxLayout="column">
         <label for="degree">Degree:</label>

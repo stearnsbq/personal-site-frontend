@@ -1,8 +1,9 @@
 <div *ngIf="shown" class="modal-container" fxLayout="column" fxLayoutAlign="center center" >
     <div class="modal" >
 
-        <div class="header">
+        <div class="header" fxLayout="row" fxLayoutAlign="space-between">
             <ng-content select="[header]"></ng-content>
+            <fa-icon (click)="close()" [icon]="faExit"></fa-icon>
         </div>
 
         <div class="body">
