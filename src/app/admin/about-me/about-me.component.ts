@@ -2,7 +2,7 @@ import { formatDate } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { faEdit, faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { IAboutMe, IEducation } from 'src/app/model/IAboutMe';
+import { IAboutMe, IEducation, IExperience } from 'src/app/model/IAboutMe';
 import { ApiService } from 'src/app/services/api.service';
 import { ModalComponent } from 'src/app/shared/modal/modal.component';
 
@@ -69,6 +69,48 @@ export class AboutMeComponent implements OnInit {
   onSubmit() {}
 
 
+  onAddNewExperienceBullet(){
+    this.experienceEditForm.controls.bullets.value.push(this.fb.control(['']))
+  }
+
+
+  onExperienceSave(){
+    if(this.editIndex <= -1){
+      this.experienceEditModal.close();
+      return this.aboutMe?.experience.push(this.experienceEditForm.value)
+    }
+
+    this.aboutMe!.experience[this.editIndex] = this.experienceEditForm!.value;
+
+    this.editIndex = -1;
+    return this.experienceEditModal.close();
+  }
+
+  openNewExperienceModal(){
+    this.experienceEditModal.open();
+  }
+
+  openEditExperienceModal(model: IExperience, idx: number){
+    this.editIndex = idx;
+
+
+    model.start = formatDate(model.start, 'yyyy-MM-dd', 'en')
+
+    if(model.end){
+      model.end = formatDate(model.end, 'yyyy-MM-dd', 'en')
+    }
+
+    console.log(this.experienceEditForm)
+ 
+    this.experienceEditForm.controls.bullets = this.fb.array(model.bullets.map((bullet) => this.fb.control([bullet])), Validators.required)
+
+
+    this.experienceEditForm.setValue(model);
+
+
+    this.experienceEditModal.open();
+  }
+
   onEducationSave(){
     if(this.editIndex <= -1){
       this.educationEditModal.close();
@@ -83,10 +125,7 @@ export class AboutMeComponent implements OnInit {
 
 
   deleteEducationItem(index: number){
-
-
     this.aboutMe!.education.splice(index, 1);
-
   }
 
   openNewEducationModal(){

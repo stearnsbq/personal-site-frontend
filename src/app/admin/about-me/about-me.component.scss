@@ -26,6 +26,10 @@ table {
 
 
 form{
+  width: 500px;
+  input{
+    width: 95%;
+  }
   section{
     margin: 5px;
   }
@@ -55,4 +59,10 @@ button {
 
 button:hover{
   background: #0357a7;
+}
+
+.bullet-container{
+  div{
+    margin: 5px;
+  }
 }
