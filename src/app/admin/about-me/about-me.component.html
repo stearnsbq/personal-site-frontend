@@ -92,7 +92,16 @@
     </table>
   </app-card>
   <app-card>
-    <h1 header>Certifications & Licenses</h1>
+
+    <section header fxLayout="row" fxLayoutAlign="space-between">
+      <h1 header>Certifications & Licenses</h1>
+      <fa-icon
+      (click)="openNewCertsAndLicenses()"
+      [icon]="faEdit"
+    ></fa-icon>
+    </section>
+
+
     <table body>
       <tr>
         <th>Title</th>
@@ -111,6 +120,7 @@
             <fa-icon
               fxFlex="25%"
               style="color: green; margin-right: 5px"
+              (click)="openEditCertsAndLicensesModal(line, i)"
               [icon]="faEdit"
             ></fa-icon>
             <fa-icon
@@ -193,7 +203,7 @@
         </section>
 
 
-        <section class="bullets" formArrayName="bullets" fxLayout="column" *ngIf="$any(experienceEditForm.get('bullets')).controls.length > 0">
+        <section class="bullets" formArrayName="bullets" fxLayout="column">
 
           <h4>Bullets</h4>
 
@@ -220,7 +230,41 @@
 </app-modal>
 
 <app-modal #certsAndLicensesEditModal >
-  <form [formGroup]="certsAndLicensesEditForm">
+  <form body [formGroup]="certsAndLicensesEditForm" (ngSubmit)="onSaveCertsAndLicenses()">
+
+    
+    <section fxLayout="column">
+      <label for="title">Title:</label>
+      <input id="title" type="text" formControlName="title">
+    </section>
+
+    <section fxLayout="column" >
+      <label for="credential">Credential:</label>
+      <input id="credential" type="text" formControlName="credential">
+    </section>
+
+
+    <section fxLayout="column" >
+      <label for="acquired">Acquired:</label>
+      <input id="acquired" type="date" formControlName="acquired">
+    </section>
+
+
+    <section fxLayout="column" >
+      <label for="expiration">Expiration:</label>
+      <input id="expiration" type="date" formControlName="expiration">
+    </section>
+
+    
+    <section fxLayout="column" >
+      <label for="Description">Description:</label>
+      <textarea id="Description" formControlName="description"></textarea>
+    </section>
+
+    <section fxLayout="row" fxLayoutAlign="center">
+      <button>Save</button>
+    </section>
+
 
   </form>
 </app-modal>

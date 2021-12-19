@@ -2,7 +2,7 @@ import { formatDate } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Form, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { faEdit, faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { IAboutMe, IEducation, IExperience } from 'src/app/model/IAboutMe';
+import { IAboutMe, ICertsAndLicenses, IEducation, IExperience } from 'src/app/model/IAboutMe';
 import { ApiService } from 'src/app/services/api.service';
 import { ModalComponent } from 'src/app/shared/modal/modal.component';
 
@@ -146,6 +146,18 @@ export class AboutMeComponent implements OnInit {
     this.educationEditModal.open();
   }
 
+  onSaveCertsAndLicenses(){
+    if(this.editIndex <= -1){
+      this.certsAndLicensesEditModal.close();
+      return this.aboutMe?.certsAndLicenses.push(this.certsAndLicensesEditForm.getRawValue())
+    }
+
+    this.aboutMe!.certsAndLicenses[this.editIndex] = this.certsAndLicensesEditForm!.getRawValue();
+
+    this.editIndex = -1;
+    return this.certsAndLicensesEditModal.close();
+  }
+
   openEditEducationModal(model: IEducation, idx: number){
     this.editIndex = idx;
 
@@ -161,6 +173,26 @@ export class AboutMeComponent implements OnInit {
 
 
     this.educationEditModal.open();
+  }
+
+  openNewCertsAndLicenses(){
+    this.certsAndLicensesEditModal.open();
+  }
+
+  openEditCertsAndLicensesModal(model: ICertsAndLicenses, idx: number){
+    this.editIndex = idx;
+
+    model.acquired = formatDate(model.acquired, 'yyyy-MM-dd', 'en')
+
+    if(model.expiration){
+      model.expiration = formatDate(model.expiration, 'yyyy-MM-dd', 'en')
+    }
+ 
+
+    this.certsAndLicensesEditForm.setValue(model);
+
+
+    this.certsAndLicensesEditModal.open();
   }
 
 }

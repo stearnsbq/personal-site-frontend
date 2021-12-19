@@ -11,6 +11,8 @@ export class AboutMeComponent implements OnInit {
 
   public aboutMe! : IAboutMe;
 
+  public readonly DATE_FORMAT = 'MMMM yyyy';
+
   constructor(private api: ApiService) { }
 
   ngOnInit(): void {
