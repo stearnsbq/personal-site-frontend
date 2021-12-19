@@ -1,12 +1,7 @@
 <div class="content" fxLayout="column">
   <app-card>
     <h2 header>About Me & Interests</h2>
-    <p body>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras imperdiet
-      quam arcu, quis facilisis quam imperdiet at. Sed in dignissim nunc.
-      Curabitur dignissim eleifend ligula in interdum. Nunc eleifend molestie
-      enim vel imperdiet.
-    </p>
+    <div body [innerHTML]="aboutMe.about"></div>
   </app-card>
 
   <app-card>

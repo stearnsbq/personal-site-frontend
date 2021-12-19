@@ -1,7 +1,12 @@
 <div *ngIf="aboutMe" class="manage-about-me-container">
   <app-card>
     <h1 header>About Me & Interests</h1>
-    <app-editor body></app-editor>
+  
+    <form fxLayout="column" style="width: 100%;" [formGroup]="aboutMeEditForm!" body>
+      <quill-editor formControlName="about-me"></quill-editor>
+      <!-- <app-editor ></app-editor> -->
+    </form>
+ 
   </app-card>
   <app-card>
     <section header fxLayout="row" fxLayoutAlign="space-between">
@@ -118,6 +123,12 @@
       </tr>
     </table>
   </app-card>
+
+
+  <div class="about-me-controls" fxLayout="row" fxLayoutAlign="center">
+    <button (click)="saveAboutMe()">Save</button>
+  </div>
+
 </div>
 
 
@@ -182,14 +193,14 @@
         </section>
 
 
-        <section class="bullets" formArrayName="bullets" fxLayout="column" *ngIf="experienceEditForm.controls.bullets.value.length > 0">
+        <section class="bullets" formArrayName="bullets" fxLayout="column" *ngIf="$any(experienceEditForm.get('bullets')).controls.length > 0">
 
           <h4>Bullets</h4>
 
           <div class="bullet-container" fxLayout="column">
-            <div *ngFor="let bullet of experienceEditForm.controls.bullets.value; let i = index" >
+            <div fxLayout="row" fxLayoutGap="15px" *ngFor="let bullet of $any(experienceEditForm.get('bullets')).controls; let i = index" >
               <input id="bullet-{{ i }}" type="text" [formControlName]="i">
-              <fa-icon [icon]="faDelete"></fa-icon>
+              <fa-icon (click)="onDeleteExperienceBullet(i)" class="delete"  [icon]="faDelete"></fa-icon>
             </div>
           </div>
 

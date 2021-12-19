@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
 import { QuillModule } from 'ngx-quill';
-import { EditorComponent } from './editor/editor.component';
 import { ModalComponent } from './modal/modal.component';
 
 
@@ -14,14 +13,15 @@ import { ModalComponent } from './modal/modal.component';
 @NgModule({
   declarations: [
     CardComponent,
-    EditorComponent,
     ModalComponent,
   ],
   imports: [
     CommonModule,
     QuillModule.forRoot(),
     FlexLayoutModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports:[
     CardComponent,
@@ -30,8 +30,8 @@ import { ModalComponent } from './modal/modal.component';
     ReactiveFormsModule,
     FontAwesomeModule,
     RouterModule,
-    EditorComponent,
-    ModalComponent
+    ModalComponent,
+    QuillModule,
   ]
 })
 export class SharedModule { }

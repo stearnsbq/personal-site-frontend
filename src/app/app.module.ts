@@ -15,7 +15,7 @@ import { QuillModule } from 'ngx-quill';
 
 export const jwtOptionsFactory = (storage: StorageService) => ({
   tokenGetter: () => storage.get('access_token'),
-  whitelistedDomains: []
+  allowedDomains: ['localhost:8080']
 });
 
 

@@ -1,6 +1,6 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Form, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { faEdit, faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { IAboutMe, IEducation, IExperience } from 'src/app/model/IAboutMe';
 import { ApiService } from 'src/app/services/api.service';
@@ -17,7 +17,7 @@ export class AboutMeComponent implements OnInit {
   @ViewChild("experienceEditModal") experienceEditModal!: ModalComponent;
   @ViewChild("certsAndLicensesEditModal") certsAndLicensesEditModal!: ModalComponent;
 
-  public aboutMeEditForm?: FormGroup;
+
   public aboutMe?: IAboutMe;
 
   public faEdit = faPencilAlt;
@@ -26,13 +26,16 @@ export class AboutMeComponent implements OnInit {
   public educationEditForm: FormGroup;
   public experienceEditForm: FormGroup;
   public certsAndLicensesEditForm: FormGroup;
-
+  public aboutMeEditForm: FormGroup;
 
   public editIndex;
 
   constructor(private api: ApiService, private fb: FormBuilder) {
     this.editIndex = -1;
 
+    this.aboutMeEditForm = fb.group({
+      'about-me': ['']
+    })
 
     this.educationEditForm = fb.group({
       degree: ['', Validators.required],
@@ -60,6 +63,7 @@ export class AboutMeComponent implements OnInit {
 
     this.api.getAboutMe().subscribe(({ data }) => {
       this.aboutMe = data;
+      this.aboutMeEditForm.get('about-me')!.setValue(this.aboutMe.about);
     });
   }
 
@@ -70,17 +74,22 @@ export class AboutMeComponent implements OnInit {
 
 
   onAddNewExperienceBullet(){
-    this.experienceEditForm.controls.bullets.value.push(this.fb.control(['']))
+    (this.experienceEditForm.get('bullets') as FormArray).push(this.fb.control(['']))
+  }
+
+  onDeleteExperienceBullet(index: number){
+    (this.experienceEditForm.get('bullets') as FormArray).removeAt(index);
   }
 
 
   onExperienceSave(){
+
     if(this.editIndex <= -1){
       this.experienceEditModal.close();
-      return this.aboutMe?.experience.push(this.experienceEditForm.value)
+      return this.aboutMe?.experience.push(this.experienceEditForm!.getRawValue())
     }
 
-    this.aboutMe!.experience[this.editIndex] = this.experienceEditForm!.value;
+    this.aboutMe!.experience[this.editIndex] = this.experienceEditForm!.getRawValue();
 
     this.editIndex = -1;
     return this.experienceEditModal.close();
@@ -93,14 +102,11 @@ export class AboutMeComponent implements OnInit {
   openEditExperienceModal(model: IExperience, idx: number){
     this.editIndex = idx;
 
-
     model.start = formatDate(model.start, 'yyyy-MM-dd', 'en')
 
     if(model.end){
       model.end = formatDate(model.end, 'yyyy-MM-dd', 'en')
     }
-
-    console.log(this.experienceEditForm)
  
     this.experienceEditForm.controls.bullets = this.fb.array(model.bullets.map((bullet) => this.fb.control([bullet])), Validators.required)
 
@@ -123,6 +129,14 @@ export class AboutMeComponent implements OnInit {
     return this.educationEditModal.close();
   }
 
+  saveAboutMe(){
+
+    console.log(this.aboutMeEditForm.value)
+
+    this.aboutMe!.about = this.aboutMeEditForm.value['about-me'];
+
+    this.api.updateAboutMe(this.aboutMe!).subscribe(console.log)
+  }
 
   deleteEducationItem(index: number){
     this.aboutMe!.education.splice(index, 1);
