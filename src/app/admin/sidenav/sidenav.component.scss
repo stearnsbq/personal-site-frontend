@@ -1,6 +1,7 @@
 .sidenav-container{
     background-color: #d1e7fc;
-    min-height: 100%;
+    min-height: calc(100vh - 59px);
+    height: 100%;
 }
 
 ul{

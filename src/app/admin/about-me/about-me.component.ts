@@ -2,8 +2,10 @@ import { formatDate } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Form, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { faEdit, faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { finalize } from 'rxjs/operators';
 import { IAboutMe, ICertsAndLicenses, IEducation, IExperience } from 'src/app/model/IAboutMe';
 import { ApiService } from 'src/app/services/api.service';
+import { LoadingService } from 'src/app/services/loading.service';
 import { ModalComponent } from 'src/app/shared/modal/modal.component';
 
 @Component({
@@ -30,7 +32,7 @@ export class AboutMeComponent implements OnInit {
 
   public editIndex;
 
-  constructor(private api: ApiService, private fb: FormBuilder) {
+  constructor(private api: ApiService, private fb: FormBuilder, private loading: LoadingService) {
     this.editIndex = -1;
 
     this.aboutMeEditForm = fb.group({
@@ -60,7 +62,6 @@ export class AboutMeComponent implements OnInit {
       expiration: []
     })
 
-
     this.api.getAboutMe().subscribe(({ data }) => {
       this.aboutMe = data;
       this.aboutMeEditForm.get('about-me')!.setValue(this.aboutMe.about);
@@ -86,7 +87,7 @@ export class AboutMeComponent implements OnInit {
 
     if(this.editIndex <= -1){
       this.experienceEditModal.close();
-      return this.aboutMe?.experience.push(this.experienceEditForm!.getRawValue())
+      return this.aboutMe?.experience.unshift(this.experienceEditForm!.getRawValue())
     }
 
     this.aboutMe!.experience[this.editIndex] = this.experienceEditForm!.getRawValue();
@@ -120,7 +121,7 @@ export class AboutMeComponent implements OnInit {
   onEducationSave(){
     if(this.editIndex <= -1){
       this.educationEditModal.close();
-      return this.aboutMe?.education.push(this.educationEditForm.value)
+      return this.aboutMe?.education.unshift(this.educationEditForm.value)
     }
 
     this.aboutMe!.education[this.editIndex] = this.educationEditForm!.value;
@@ -130,8 +131,7 @@ export class AboutMeComponent implements OnInit {
   }
 
   saveAboutMe(){
-
-    console.log(this.aboutMeEditForm.value)
+;
 
     this.aboutMe!.about = this.aboutMeEditForm.value['about-me'];
 
@@ -142,6 +142,14 @@ export class AboutMeComponent implements OnInit {
     this.aboutMe!.education.splice(index, 1);
   }
 
+  deleteExperienceItem(index: number){
+    this.aboutMe!.experience.splice(index, 1);
+  }
+  
+  deleteCertsAndLicensesItem(index: number){
+    this.aboutMe!.certsAndLicenses.splice(index, 1);
+  }
+
   openNewEducationModal(){
     this.educationEditModal.open();
   }
@@ -149,7 +157,7 @@ export class AboutMeComponent implements OnInit {
   onSaveCertsAndLicenses(){
     if(this.editIndex <= -1){
       this.certsAndLicensesEditModal.close();
-      return this.aboutMe?.certsAndLicenses.push(this.certsAndLicensesEditForm.getRawValue())
+      return this.aboutMe?.certsAndLicenses.unshift(this.certsAndLicensesEditForm.getRawValue())
     }
 
     this.aboutMe!.certsAndLicenses[this.editIndex] = this.certsAndLicensesEditForm!.getRawValue();

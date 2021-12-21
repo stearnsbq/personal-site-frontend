@@ -22,14 +22,22 @@
   <app-card>
     <h2 header>Experience</h2>
     <div body fxLayout="column" fxLayoutGap="15px">
-
-      <div *ngFor="let item of aboutMe.experience">
-          {{item | json}}
+      <div *ngFor="let item of aboutMe.experience" fxLayout="column" fxLayoutGap="5px">
           <h3>{{item.title}}</h3>
           <div class="info" fxLayout="column" fxLayoutGap="5px">
             <p>{{item.company}}</p>
             <p>{{item.start | date : DATE_FORMAT}} - {{item.end ? (item.end | date : DATE_FORMAT) : 'Current'}}</p>
           </div>
+          <ng-container *ngIf="item.bullets.length > 0">
+            <div class="divider"></div>
+            <div class="highlights" fxLayout="column" fxLayoutGap="5px">
+              <h4>Highlights</h4>
+              <ul>
+                <li *ngFor="let highlight of item.bullets">{{highlight}}</li>
+              </ul>
+            </div>
+          </ng-container>
+
       </div>
 
     </div>
@@ -39,8 +47,17 @@
     <h2 header>Certifications & Licenses</h2>
     <div body>
 
-      <div *ngFor="let item of aboutMe.certsAndLicenses">
-          {{item | json}}
+      <div *ngFor="let item of aboutMe.certsAndLicenses" fxLayout="column" fxLayoutGap="5px">
+
+        <h3>{{item.title}}</h3>
+
+        <div class="info">  
+            <p>Credential: {{item.credential}}</p>
+            <p>Acquired: {{item.acquired | date : DATE_FORMAT}} | Expiration {{item.expiration | date : DATE_FORMAT}}</p>
+        </div>
+
+        <p>{{item.description}}</p>
+        
       </div>
 
     </div>

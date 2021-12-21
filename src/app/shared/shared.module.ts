@@ -7,6 +7,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
 import { QuillModule } from 'ngx-quill';
 import { ModalComponent } from './modal/modal.component';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 
 
 
@@ -14,6 +15,7 @@ import { ModalComponent } from './modal/modal.component';
   declarations: [
     CardComponent,
     ModalComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     CommonModule,
@@ -32,6 +34,7 @@ import { ModalComponent } from './modal/modal.component';
     RouterModule,
     ModalComponent,
     QuillModule,
+    LoadingSpinnerComponent
   ]
 })
 export class SharedModule { }

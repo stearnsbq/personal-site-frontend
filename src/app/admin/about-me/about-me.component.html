@@ -84,6 +84,7 @@
             <fa-icon
               fxFlex="25%"
               style="color: red"
+              (click)="deleteExperienceItem(i)"
               [icon]="faDelete"
             ></fa-icon>
           </td>
@@ -125,6 +126,7 @@
             ></fa-icon>
             <fa-icon
               fxFlex="25%"
+              (click)="deleteCertsAndLicensesItem(i)"
               style="color: red"
               [icon]="faDelete"
             ></fa-icon>
