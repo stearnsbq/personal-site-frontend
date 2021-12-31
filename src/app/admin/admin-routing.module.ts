@@ -4,7 +4,6 @@ import { AboutMeComponent } from './about-me/about-me.component';
 import { AdminComponent } from './admin.component';
 import { BlogComponent } from './blog/blog.component';
 import { EditComponent } from './blog/edit/edit.component';
-import { NewComponent } from './blog/new/new.component';
 
 const routes: Routes = [
   {
@@ -13,8 +12,8 @@ const routes: Routes = [
     children: [
       { path: 'about-me', component: AboutMeComponent, data: {label: 'Manage About Me'} },
       { path: 'blog', component: BlogComponent, data: {label: 'Manage Blog'}, children: [
-        {path: 'new', component: NewComponent},
-        {path: 'edit/:title', component: EditComponent}
+        {path: 'new', component: EditComponent},
+        {path: 'edit/:post', component: EditComponent}
       ] },
     ],
   },

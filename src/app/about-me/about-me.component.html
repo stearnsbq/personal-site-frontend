@@ -1,4 +1,4 @@
-<div class="content" fxLayout="column">
+<div class="content" *ngIf="aboutMe" fxLayout="column">
   <app-card>
     <h2 header>About Me & Interests</h2>
     <div body [innerHTML]="aboutMe.about"></div>
@@ -31,7 +31,7 @@
           <ng-container *ngIf="item.bullets.length > 0">
             <div class="divider"></div>
             <div class="highlights" fxLayout="column" fxLayoutGap="5px">
-              <h4>Highlights</h4>
+              <!-- <h4>Highlights</h4> -->
               <ul>
                 <li *ngFor="let highlight of item.bullets">{{highlight}}</li>
               </ul>

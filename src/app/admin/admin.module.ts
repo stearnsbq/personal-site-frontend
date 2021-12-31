@@ -10,7 +10,6 @@ import { BlogComponent } from './blog/blog.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { QuillModule } from 'ngx-quill';
-import { NewComponent } from './blog/new/new.component';
 import { EditComponent } from './blog/edit/edit.component';
 
 
@@ -22,7 +21,6 @@ import { EditComponent } from './blog/edit/edit.component';
     BlogComponent,
     ProjectsComponent,
     AboutMeComponent,
-    NewComponent,
     EditComponent,
   ],
   imports: [

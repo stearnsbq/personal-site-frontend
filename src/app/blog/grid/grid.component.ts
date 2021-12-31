@@ -5,6 +5,7 @@ import { IBlogPostCard } from 'src/app/model/IBlogPostCard';
 import { ApiService } from 'src/app/services/api.service';
 import { map } from 'rxjs/operators';
 import { query } from '@angular/animations';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-grid',
@@ -13,6 +14,7 @@ import { query } from '@angular/animations';
 })
 export class GridComponent implements OnInit {
   public posts!: IBlogPostCard[];
+  environment = environment
 
   constructor(
     private router: Router,
@@ -31,7 +33,7 @@ export class GridComponent implements OnInit {
           params: { search, category },
           query: { year, month, day },
         }) => {
-          this.posts = await this.api
+          this.posts = (await this.api
             .getBlogPosts(
               1,
               search,
@@ -40,7 +42,7 @@ export class GridComponent implements OnInit {
               parseInt(month),
               parseInt(day)
             )
-            .toPromise();
+            .toPromise()).data;
         }
       );
   }

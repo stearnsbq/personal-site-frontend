@@ -20,7 +20,7 @@
           <a
             class="card-image"
             header
-            style.background-image="url({{ post.image }})"
+            style.background-image="url({{environment.apiURL}}/static/blog/{{ post.image }})"
           >
             <span>{{ post.title }}</span>
           </a>

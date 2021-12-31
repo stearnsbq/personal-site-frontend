@@ -1,1 +1,41 @@
-<p>edit works!</p>
+<div class="new-blog-post-container" fxLayout="row" fxLayoutAlign="center">
+
+
+    <app-card>
+        <h1 header>New Post</h1>
+
+
+        <form body [formGroup]="blogPostEditForm" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutGap="15px"> 
+
+            <section fxLayout="column">
+                <label for="title">Title:</label>
+                <input type="text" id="title" formControlName="title">
+            </section>
+
+            <section fxLayout="column">
+                <label for="description">Description:</label>
+                <textarea id="description" formControlName="description"></textarea>
+            </section>
+
+            <section fxLayout="column">
+                <label for="image">Image:</label>
+                <input id="image" type="file" (change)="onFileChange($event)">
+                <img style="height: 250px; width: 250px;" *ngIf="post?.image" src="{{environment.apiURL}}/static/blog/{{post!.image}}">
+            </section>
+
+            <section fxLayout="column">
+                <label for="content">Content:</label>
+                <quill-editor id="content" formControlName="content"></quill-editor>
+            </section>
+
+            
+            <section fxLayout="row" fxLayoutAlign="center">
+                <button>Create</button>
+            </section>
+            
+            
+        </form>
+
+    </app-card>
+
+</div>
