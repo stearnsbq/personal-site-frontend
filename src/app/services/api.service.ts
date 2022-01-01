@@ -18,10 +18,11 @@ export class ApiService {
   public async updateBlogPost(postID: string, {title, description, image, tags, content}: IBlogPost){
 
 
-    await this.http.put<IResponse<IBlogPost>>(`${environment.apiURL}/blog/post/${postID}`, {title, description, tags, content}).toPromise();
+    if(typeof image === 'object'){
+      return await this.uploadBlogImage(postID, image as any).toPromise();
+    }
 
-    return await this.uploadBlogImage(postID, image as any).toPromise();
-
+    return this.http.put<IResponse<IBlogPost>>(`${environment.apiURL}/blog/post/${postID}`, {title, description, tags, content}).toPromise();
 
     //return this.http.put<IResponse<IBlogPost>>(`${environment.apiURL}/blog/post/${postID}`, post);
   }
@@ -47,7 +48,7 @@ export class ApiService {
 
 
   public getBlogPost(year: number, month: number, day: number, title: string){
-     return this.http.get<IBlogPost>(`${environment.apiURL}/posts/${year}/${month}/${day}/${title}`);
+     return this.http.get<IResponse<IBlogPost>>(`${environment.apiURL}/blog/posts/${year}/${month}/${day}/${title}`);
   }
 
   public getBlogPostByID(post: string){

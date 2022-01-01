@@ -57,7 +57,7 @@ export class GridComponent implements OnInit {
       date.getFullYear(),
       date.getMonth() + 1,
       date.getDate(),
-      post.title.replace(' ', '-'),
+      post.title,
     ]);
   }
 }
