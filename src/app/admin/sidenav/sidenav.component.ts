@@ -8,8 +8,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SidenavComponent implements OnInit {
 
+  public routes: any
+
   constructor(public route: ActivatedRoute) { 
-    
+      this.routes = route.routeConfig?.children?.slice(1)
   }
 
   ngOnInit(): void {

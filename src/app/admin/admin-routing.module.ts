@@ -10,11 +10,21 @@ const routes: Routes = [
     path: '',
     component: AdminComponent,
     children: [
-      { path: 'about-me', component: AboutMeComponent, data: {label: 'Manage About Me'} },
-      { path: 'blog', component: BlogComponent, data: {label: 'Manage Blog'}, children: [
-        {path: 'new', component: EditComponent},
-        {path: 'edit/:post', component: EditComponent}
-      ] },
+      { path: '', pathMatch: 'full', redirectTo: 'about-me' },
+      {
+        path: 'about-me',
+        component: AboutMeComponent,
+        data: { label: 'Manage About Me' },
+      },
+      {
+        path: 'blog',
+        component: BlogComponent,
+        data: { label: 'Manage Blog' },
+        children: [
+          { path: 'new', component: EditComponent },
+          { path: 'edit/:post', component: EditComponent },
+        ],
+      },
     ],
   },
 ];

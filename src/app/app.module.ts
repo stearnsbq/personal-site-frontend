@@ -17,6 +17,11 @@ import { StorageService } from './services/storage.service';
 import { QuillModule } from 'ngx-quill';
 import { SharedModule } from './shared/shared.module';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import Quill from 'quill';
+
+import ImageResize from 'quill-image-resize'
+
+Quill.register('modules/ImageResize', ImageResize);
 
 export const jwtOptionsFactory = (storage: StorageService) => ({
   tokenGetter: () => storage.get('access_token'),
@@ -34,7 +39,7 @@ export const jwtOptionsFactory = (storage: StorageService) => ({
     FlexLayoutModule,
     FontAwesomeModule,
     HttpClientModule,
-    QuillModule.forRoot(),
+    QuillModule.forRoot({modules: {ImageResize: {}}}),
     SharedModule,
 
     JwtModule.forRoot({

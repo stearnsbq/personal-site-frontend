@@ -8,7 +8,8 @@ import { RouterModule } from '@angular/router';
 import { QuillModule } from 'ngx-quill';
 import { ModalComponent } from './modal/modal.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
-
+import ImageResize from 'quill-image-resize-module';
+import Quill from 'quill';
 
 
 @NgModule({
@@ -19,7 +20,6 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
   ],
   imports: [
     CommonModule,
-    QuillModule.forRoot(),
     FlexLayoutModule,
     FontAwesomeModule,
     FormsModule,

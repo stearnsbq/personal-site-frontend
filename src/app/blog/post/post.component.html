@@ -1,5 +1,10 @@
 <div class="post-container" fxLayout="row" fxLayoutAlign="center">
-    <div *ngIf="post" fxFlex="75" fxLayout="column" [innerHTML]="post.content" class="content" body></div>
+
+    <quill-view-html fxFlex="75" fxLayout="column" [content]="post!.content" ></quill-view-html>
+
+
+
+    
 </div>
 
 

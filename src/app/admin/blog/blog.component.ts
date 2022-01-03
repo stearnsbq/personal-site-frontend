@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import Quill from 'quill';
 import { IBlogPost } from 'src/app/model/IBlogPost';
 import { IBlogPostCard } from 'src/app/model/IBlogPostCard';
 import { ApiService } from 'src/app/services/api.service';
@@ -19,7 +20,6 @@ export class BlogComponent implements OnInit {
 
   constructor(private api: ApiService, public route: ActivatedRoute, private router: Router) {
 
-    console.log(route)
 
    }
 

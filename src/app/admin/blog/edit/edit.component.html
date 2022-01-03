@@ -17,6 +17,29 @@
                 <textarea id="description" formControlName="description"></textarea>
             </section>
 
+            
+            <section fxLayout="column" formArrayName="tags">
+                <label for="description">Tags:</label>
+                <div class="tags-container">
+                    <ul fxLayout="row" fxLayoutGap="5px">
+                        <li class="chip" *ngFor="let chip of tags.controls; let i = index">
+                            <span>
+                                {{chip.value[0] | titlecase}}
+                            </span>
+
+                            <fa-icon [icon]="faClose" (click)="onDeleteChip(i)"></fa-icon>
+                 
+                        </li>
+                        <li class="add-chip" fxLayout="row" fxLayoutGap="5px">
+                            <input form="nil" (change)="onChipAdd(newChip)" #newChip type="text">
+
+
+                            <!-- <button form="nil" >Add Chip</button> -->
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
             <section fxLayout="column">
                 <label for="image">Image:</label>
                 <input id="image" type="file" (change)="onFileChange($event)">
@@ -28,6 +51,7 @@
                 <quill-editor id="content" formControlName="content"></quill-editor>
             </section>
 
+        
             <section fxLayout="row" fxLayoutAlign="center">
                 <button class="button">{{post ? 'Save': 'Created'}}</button>
             </section>
