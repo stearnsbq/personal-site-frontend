@@ -23,24 +23,24 @@ export class GridComponent implements OnInit {
   ) {
     combineLatest([this.route.params, this.route.queryParams])
       .pipe(
-        map(([params, query]) => ({
-          params,
-          query,
-        }))
-      )
+        map(([params, query]) => ({params,query})))
       .subscribe(
         async ({
-          params: { search, category },
-          query: { year, month, day },
+          params,
+          query,
         }) => {
+
+
+          console.log(params, query)
+
           this.posts = (await this.api
             .getBlogPosts(
               1,
-              search,
-              category,
-              parseInt(year),
-              parseInt(month),
-              parseInt(day)
+              query.search,
+              query.tag,
+              parseInt(params.year),
+              parseInt(params.month),
+              parseInt(params.day)
             )
             .toPromise()).data;
         }

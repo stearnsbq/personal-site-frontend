@@ -21,16 +21,6 @@ export class BlogComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if(this.route.children.length === 0){
-
-      this.route.queryParams.subscribe(({search, category}) => {
-        this.api.getBlogPosts(1, search, category).subscribe((posts) => this.posts = posts.data);
-      })
-
-
-      this.api.getBlogPosts(1).subscribe((posts) => this.posts = posts.data);
-    }
-
 
   }
 

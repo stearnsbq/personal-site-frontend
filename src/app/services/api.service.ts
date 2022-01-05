@@ -4,10 +4,12 @@ import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { IAboutMe } from '../model/IAboutMe';
+import { IArchive } from '../model/IArchive';
 import { IBlogPost } from '../model/IBlogPost';
 import { IBlogPostCard } from '../model/IBlogPostCard';
 import { IProjectCard } from '../model/IProjectCard';
 import { IResponse } from '../model/IResponse';
+import { ITag } from '../model/ITag';
 
 @Injectable({
   providedIn: 'root',
@@ -27,6 +29,31 @@ export class ApiService {
     //return this.http.put<IResponse<IBlogPost>>(`${environment.apiURL}/blog/post/${postID}`, post);
   }
 
+  public getArchives(){
+    return this.http.get<IResponse<IArchive[]>>(`${environment.apiURL}/blog/archives`);
+  }
+
+  public getTags(year?: string, month?: string, day?: string){
+    let params = new HttpParams();
+
+    if(year){
+      params = params.set('year', year);
+    }
+
+    if(month){
+      params = params.set('month', month);
+    }
+
+    if(day){
+      params = params.set('day', day);
+    }
+
+
+
+
+    return this.http.get<IResponse<ITag[]>>(`${environment.apiURL}/blog/tags`, {params});
+  }
+
   public updateAboutMe(model: IAboutMe){
     return this.http.put<IResponse<IAboutMe>>(`${environment.apiURL}/about`, model);
   }
@@ -34,7 +61,6 @@ export class ApiService {
   public getAboutMe(){
     return this.http.get<IResponse<IAboutMe>>(`${environment.apiURL}/about`)
   }
-
 
   public getProjects(search?: string, page = 0){
     let params = new HttpParams().set('page', page);
@@ -77,7 +103,7 @@ export class ApiService {
   public getBlogPosts(
     page: number = 1,
     search?: string,
-    category?: string,
+    tag?: string,
     year?: number,
     month?: number,
     day?: number
@@ -89,8 +115,8 @@ export class ApiService {
 
     let params = new HttpParams();
 
-    if (category) {
-      params = params.append('category', category);
+    if (tag) {
+      params = params.append('tag', tag);
     }
 
     if (search) {
@@ -98,15 +124,7 @@ export class ApiService {
     }
 
     params = params.append('page', page);
-    // return of(new Array(9).fill(      {
-    //   title: 'Lorem Ipsum',
-    //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras imperdiet quam arcu, quis facilisis quam imperdiet at. Sed in dignissim nunc.',
-    //   created: '2021-09-09T00:57:10Z',
-    //   lastUpdated: '2021-09-09T00:57:10Z',
-    //   timeToRead: '5 min',
-    //   image: 'https://via.placeholder.com/1024',
-    //   views: Math.floor(Math.random() * 10000)
-    // }));
+
     return this.http.get<IResponse<IBlogPostCard[]>>(`${environment.apiURL}/blog/posts${path}`, {params});
   }
 }

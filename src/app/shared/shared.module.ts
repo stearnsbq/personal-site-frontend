@@ -10,6 +10,7 @@ import { ModalComponent } from './modal/modal.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import ImageResize from 'quill-image-resize-module';
 import Quill from 'quill';
+import { NumToMonthPipe } from './pipes/num-to-month.pipe';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import Quill from 'quill';
     CardComponent,
     ModalComponent,
     LoadingSpinnerComponent,
+    NumToMonthPipe
   ],
   imports: [
     CommonModule,
@@ -34,6 +36,7 @@ import Quill from 'quill';
     RouterModule,
     ModalComponent,
     QuillModule,
+    NumToMonthPipe,
     LoadingSpinnerComponent
   ]
 })
