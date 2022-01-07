@@ -49,8 +49,6 @@ export class ApiService {
     }
 
 
-
-
     return this.http.get<IResponse<ITag[]>>(`${environment.apiURL}/blog/tags`, {params});
   }
 
